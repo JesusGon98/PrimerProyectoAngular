@@ -1,0 +1,17 @@
+<mat-card class="mb-6">
+  <mat-card-header class="bg-slate-50 px-4 py-3 rounded-t-lg">
+    <mat-icon mat-card-avatar class="text-slate-600">{{ icon }}</mat-icon>
+    <mat-card-title class="text-slate-800">{{ title }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="px-4 pt-2">
+    <ng-content></ng-content>
+  </mat-card-content>
+
+  <mat-card-actions class="px-4 pb-3 flex justify-end">
+    <button mat-flat-button (click)="onSave()">
+      <mat-icon>save</mat-icon>
+      Guardar
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,1 +1,39 @@
-<p>settings works!</p>
+
+<div class="max-w-2xl mx-auto px-6 py-8">
+  <h1 class="text-2xl font-bold text-slate-800 mb-6">Settings</h1>
+
+  <!-- Card del usuario (nueva) -->
+  <app-user-card
+    [userName]="user.name"
+    [userEmail]="user.email"
+    (profileSaved)="onProfileSaved($event)">
+  </app-user-card>
+
+  <app-settings-section
+    title="Notificaciones"
+    icon="notifications"
+    (saved)="onNotificationsSaved()">
+
+    <app-toggle-option
+      label="Notificaciones por email"
+      description="Recibe actualizaciones de tu backlog por correo"
+      [checked]="notifications.email"
+      (checkedChange)="onToggleChange('email', $event)">
+    </app-toggle-option>
+
+    <app-toggle-option
+      label="Notificaciones push"
+      description="Alertas en tiempo real en el navegador"
+      [checked]="notifications.push"
+      (checkedChange)="onToggleChange('push', $event)">
+    </app-toggle-option>
+
+    <app-toggle-option
+      label="Resumen semanal"
+      description="Un email cada lunes con tu progreso"
+      [checked]="notifications.weekly"
+      (checkedChange)="onToggleChange('weekly', $event)">
+    </app-toggle-option>
+
+  </app-settings-section>
+</div>
