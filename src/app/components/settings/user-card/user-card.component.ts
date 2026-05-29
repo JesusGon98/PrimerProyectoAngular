@@ -13,19 +13,21 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './user-card.component.scss',
 })
 export class UserCardComponent {
+  //definimos las propiedades de entrada para recibir el nombre y correo del usuario desde el componente padre
   @Input() userName: string = '';
   @Input() userEmail: string = '';
-
+   //definimos el evento de salida para emitir los cambios realizados en el perfil del usuario al componente padre
   @Output() profileSaved = new EventEmitter<{ name: string; email: string }>();
 
   public editedName: string = '';
   public editedEmail: string = '';
 
+  //inicializamos las propiedades editadas con los valores recibidos del componente padre para mostrar la informacion actual del usuario en los campos de texto
   ngOnInit() {
     this.editedName = this.userName;
     this.editedEmail = this.userEmail;
   }
-
+ //creamos el metodo que sera llamado cuando el usuario haga clic en el boton de guardar para emitir los cambios realizados en el perfil del usuario al componente padre y mostrar un mensaje de confirmacion
   public onSave() {
     console.log('Perfil guardado:', { name: this.editedName, email: this.editedEmail });
     this.profileSaved.emit({ name: this.editedName, email: this.editedEmail });
