@@ -12,7 +12,7 @@ import IUser from '../../interfaces/user/user.interface';
 //Jesus Ramiro Gonzalez Rivas - 2023-11-28
 export class UserService {
   constructor(private httpclient: HttpClient) {}
-  private apiUrl: string = '${environment.apiUrl}/collections/users/records';
+  private apiUrl: string = `${environment.apiUrl}/collections/users/records`;
 
   public find(userId: string): Observable<IUserRecordResponse> {
     const headers = new HttpHeaders({'x-api-key': environment.apiKey});
