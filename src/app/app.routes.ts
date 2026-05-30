@@ -6,16 +6,23 @@ import path from 'path';
 import { not } from 'rxjs/internal/util/not';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LayoutComponent } from './layout/layout.component';
+import { LoginComponent } from './pages/login/login.component';
+import { authGuard } from './guard/auth-guard';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'login',
         pathMatch: 'full'
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: '',
         component: LayoutComponent,
+        canActivate: [authGuard],
         children: [
             {
                 path: 'home',
