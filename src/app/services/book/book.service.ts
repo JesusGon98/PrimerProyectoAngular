@@ -22,11 +22,11 @@ export class BookService {
   }
 
   public create(book: IBook): Observable<IBookRecordResponse> {
-    return this.httpClient.post<IBookRecordResponse>(this.apiUrl, book);
+    return this.httpClient.post<IBookRecordResponse>(this.apiUrl, { data: book });
   }
 
   public update(bookId: string, book: IBook): Observable<IBookRecordResponse> {
-    return this.httpClient.post<IBookRecordResponse>(`${this.apiUrl}/${bookId}`, book);
+    return this.httpClient.put<IBookRecordResponse>(`${this.apiUrl}/${bookId}`, { data: book });
   }
 
   public delete(bookId: string): Observable<IBookRecordResponse> {
